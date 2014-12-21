@@ -22,7 +22,7 @@ parser.add_argument('-sv', '--server', choices=servers,
                     help='Server to be used in generated streams. dEU = EU random, '
                          'd77 = EU NL-i3d, d11 = EU UK, d71 = EU NL-EVO, '
                          'dNA = US Random, dNAe =  US East, dNAw = US West, dSG = Asia', default='d71')
-parser.add_argument('-t', '--time-shift', type=int, help='Difference in hours betweeen your timezone and UTC -5. ',
+parser.add_argument('-t', '--time-shift', type=int, help='Difference in hours betweeen your timezone and UTC -5',
                     default=5 + (time.timezone / -3600))
 parser.add_argument('file', nargs='?', help="Name of generated playlist", default='smoothstreams.m3u8')
 
