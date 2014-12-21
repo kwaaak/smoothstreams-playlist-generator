@@ -59,11 +59,12 @@ def get_service_url(s):
 
 
 def get_service_creds(s):
-    base_url = get_service_url(s)
-    if base_url is not None:
-        request_url = base_url + '?username=%s&password=%s&site=%s' % (username, password, s)
-        r = requests.get(request_url)
-        return r.json()
+    if username is not None or password is not None:
+        base_url = get_service_url(s)
+        if base_url is not None:
+            request_url = base_url + '?username=%s&password=%s&site=%s' % (username, password, s)
+            r = requests.get(request_url)
+            return r.json()
 
 
 def get_service_port(p, s):
