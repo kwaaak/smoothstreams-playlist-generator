@@ -1,0 +1,4 @@
+argparse==1.2.1
+python-xmltv==1.4.3
+requests==2.5.0
+wsgiref==0.1.2
