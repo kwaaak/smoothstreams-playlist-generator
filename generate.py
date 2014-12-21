@@ -11,8 +11,8 @@ servers = ['dEU', 'd77', 'd11', 'd71', 'dNA', 'dNAe', 'dNAw', 'dSG']
 parser = argparse.ArgumentParser()
 parser.add_argument('-s', '--site', choices=sites,
                     help="Site you are a member of", required=True)
-parser.add_argument('-u', '--username', help="Username used to login to site", required=True)
-parser.add_argument('-p', '--password', help="Password used to login to site", required=True)
+parser.add_argument('-u', '--username', help="Username used to login to site", default=None)
+parser.add_argument('-p', '--password', help="Password used to login to site", default=None)
 parser.add_argument('-pr', '--protocol', choices=protocols,
                     help="Protocol used when generating streams", default=protocols[0])
 parser.add_argument('-q', '--quality', choices=qualities, help='Quality of generated streams',
@@ -86,8 +86,12 @@ def get_service_port(p, s):
 
 
 def get_stream_url(site, protocol, channel, credentials):
-    id = credentials['id']
-    pw = credentials['password']
+    if username is not None and password is not None:
+        id = credentials['id']
+        pw = credentials['password']
+    else:
+        id = 'REPLACE_ID'
+        pw = 'REPLACE_PASS'
 
     ch = str(channel).zfill(2)
     port = get_service_port(protocol, site)
@@ -113,7 +117,6 @@ def get_stream_url(site, protocol, channel, credentials):
 
 def create_playlist():
     credentials = get_service_creds(site)
-
     download_file('http://smoothstreams.tv/schedule/feed.xml')
     if os.path.exists('feed.xml'):
         channels = xmltv.read_channels('feed.xml')

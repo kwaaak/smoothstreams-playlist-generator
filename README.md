@@ -11,11 +11,17 @@ PVR client.
 First install the required dependencies through pip:
 `pip install -r requirements`
 
-View the help to see the switches. Most of the 'optional arguments' are actually required.
+View the help to see the switches. The 'site' 'optional argument' is actually required.
 `python generate.py -h`
 
 ##### Example
+Generate a fully functional playlist that you can 'plug and play'
 `python generate.py -site live247 -u USERNAME -p PASSWORD -q hd -sv d71 --time-shift 7`
+
+Generate a playlist without specifying a username and password. This can be used in the case of generating a playlist for
+another user and allows one to manually find and replace `REPLACE_ID` and `REPLACE_PASS` with their user id and hashed password
+`python generate.py -site live247 -q hd -sv d71 --time-shift 7`
+Stream URLs look like: `rtmp://d77.smoothstreams.tv:2935/view/ch50q1.stream?u=REPLACE_ID&p=REPLACE_PASS`
 
 ````
 usage: generate.py [-h] -s {live247,mystreams,starstreams,mma-tv} -u USERNAME
