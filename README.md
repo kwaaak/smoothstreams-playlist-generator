@@ -1,18 +1,21 @@
 SmoothStreams Playlist Generator
 ================================
-###### About
+### About
 This python script will generate a .m3u playlist that contains streams for all channels. At runtime the user declares
 what information should be used to generate the stream links (server, protocol, quality, etc). The generated playlist
 also feature tags that allows it to be used along with the SmoothStreams XMLTV feed in the 'PVR IPTV Simple Client' Kodi
 PVR client.
 
-###### Usage
+### Usage
 
 First install the required dependencies through pip:
 `pip install -r requirements`
 
 View the help to see the switches. Most of the 'optional arguments' are actually required.
 `python generate.py -h`
+
+##### Example
+`python generate.py -site live247 -u USERNAME -p PASSWORD -q hd -sv d71 --time-shift 7`
 
 ````
 usage: generate.py [-h] -s {live247,mystreams,starstreams,mma-tv} -u USERNAME
